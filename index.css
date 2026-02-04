@@ -1,0 +1,353 @@
+:root {
+  --primary: #2563eb;
+  --primary-light: #e0e7ff;
+  --danger: #dc2626;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e5e7eb;
+}
+
+/* 🌙 DARK MODE */
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --border: #334155;
+  --primary-light: #1e40af;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+h2 {
+  margin-bottom: 12px;
+}
+
+/* ---------- CARD ---------- */
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- INPUTS ---------- */
+input, select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* ---------- BUTTONS ---------- */
+button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transform: translateY(-1px);
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button.secondary {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+button.danger {
+  background: var(--danger);
+}
+
+/* ---------- GROUP BUTTONS ---------- */
+.group-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.group-list button {
+  background: #e5e7eb;
+  color: var(--text);
+}
+
+.group-list button.active {
+  background: var(--primary);
+  color: white;
+}
+
+/* ---------- EXPENSE LIST ---------- */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+/* ---------- BALANCE ---------- */
+.balance-positive {
+  color: #16a34a;
+}
+
+.balance-negative {
+  color: var(--danger);
+}
+
+/* ---------- PARTICIPANTS ---------- */
+.participants {
+  margin-top: 10px;
+}
+
+.participants label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+/* ---------- ADD EXPENSE PARTICIPANTS ---------- */
+
+.participants {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.participant {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  background: #f8fafc;
+}
+
+.participant:hover {
+  background: var(--primary-light);
+}
+
+/* ---------- SETTLEMENT CLEAN LAYOUT ---------- */
+
+.settlement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.settlement-row {
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+[data-theme="dark"] .settlement-row {
+  background: #1e293b;
+}
+
+.settlement-row input {
+  transform: scale(1.2);
+}
+
+.settlement-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+}
+
+.settlement-info .from,
+.settlement-info .to {
+  font-weight: 600;
+}
+
+.settlement-info .arrow {
+  color: var(--muted);
+}
+
+.settlement-amount {
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+/* ---------- SETTLEMENT INTERACTIONS ---------- */
+
+.settlement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.settlement-row {
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #f8fafc;
+  cursor: pointer;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+[data-theme="dark"] .settlement-row {
+  background: #1e293b;
+}
+
+.settlement-row input {
+  transform: scale(1.2);
+}
+
+.settlement-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+}
+
+.settlement-info .from,
+.settlement-info .to {
+  font-weight: 600;
+}
+
+.settlement-info .arrow {
+  color: var(--muted);
+}
+
+/* PAID BADGE */
+.paid-badge {
+  margin-left: 10px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 999px;
+  background: #16a34a;
+  color: white;
+}
+
+/* AMOUNT */
+.settlement-amount {
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+/* FADE OUT ANIMATION */
+.fade-out {
+  opacity: 0;
+  transform: translateX(10px);
+  pointer-events: none;
+}
+
+/* ---------- TOAST ---------- */
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111827;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  animation: slideUp 0.3s ease;
+  z-index: 1000;
+}
+
+.toast button {
+  background: transparent;
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
